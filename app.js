@@ -4,10 +4,19 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
 import contactsRouter from './routes/contacts.js';
+import admin from 'firebase-admin';
+import dotenv from 'dotenv'
+
+dotenv.config()
+admin.initializeApp({
+  credential: admin.credential.cert(
+    JSON.parse(
+    Buffer.from(process.env.GOOGLE_CONFIG_BASE64, 'base64').toString('ascii'))
+  )
+})
 
 var app = express();
 
-// view engine setup
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
