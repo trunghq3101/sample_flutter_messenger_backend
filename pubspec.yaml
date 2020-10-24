@@ -1,0 +1,3 @@
+name: sample_flutter_messenger_backend
+dependencies:
+  json_api: ^4.3.0
