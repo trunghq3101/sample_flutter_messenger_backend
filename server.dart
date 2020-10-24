@@ -7,7 +7,7 @@ import 'package:json_api/server.dart';
 void main() async {
   final port = 8080;
 
-  final address = '192.168.1.80';
+  final address = InternetAddress.loopbackIPv4;
 
   final repo = InMemoryRepository({'contacts': {}});
   await repo.create('contacts',
@@ -26,7 +26,7 @@ void main() async {
   final serverHandler = DartServer(loggingJsonApiServer);
 
   final server = await HttpServer.bind(address, port);
-  print('Listening on ${Uri(host: address, port: port, scheme: 'http')}');
+  print('Listening on ${Uri(host: address.address, port: port, scheme: 'http')}');
 
   await server.forEach(serverHandler);
 }
