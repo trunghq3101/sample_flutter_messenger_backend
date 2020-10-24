@@ -1,10 +1,10 @@
 import express from 'express';
 var router = express.Router();
-import JSONAPISerializer from 'jsonapi-serializer';
+import jsonapi from 'jsonapi-serializer';
 
 /* GET contacts listing. */
 router.get('/', function(req, res, next) {
-  var ContactsSerializer = new JSONAPISerializer('contacts', {
+  var ContactsSerializer = new jsonapi.Serializer('contacts', {
     attributes: ['name']
   });
   const contacts = [
