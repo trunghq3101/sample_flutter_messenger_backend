@@ -1,6 +1,6 @@
-var express = require('express');
+import express from 'express';
 var router = express.Router();
-var JSONAPISerializer = require('jsonapi-serializer').Serializer;
+import JSONAPISerializer from 'jsonapi-serializer';
 
 /* GET contacts listing. */
 router.get('/', function(req, res, next) {
@@ -20,4 +20,4 @@ router.get('/', function(req, res, next) {
   res.send(ContactsSerializer.serialize(contacts));
 });
 
-module.exports = router;
+export default router;
